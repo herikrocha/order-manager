@@ -1,6 +1,5 @@
 package com.example.ordermanager.entity;
 
-import com.example.ordermanager.enums.OrderStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,7 +23,7 @@ public class Order {
 
     private Integer quantity;
 
-    private OrderStatus status;
+    private String status;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itemId", referencedColumnName = "id")

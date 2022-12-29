@@ -70,7 +70,7 @@ public class StockMovementService {
     private void updateStockItem(StockMovementDTO dto, Item item) {
         if (dto.getType().equals(OrderType.WITHDRAWAL)) {
             stockWithdrawal(item, dto.getQuantity());
-        } else if (dto.getType().equals(OrderType.ENTRY)) {
+        } else if (dto.getType().equals(OrderType.ENTRY.toString())) {
             itemService.performStockEntry(item, dto.getQuantity());
         }
     }
@@ -84,7 +84,7 @@ public class StockMovementService {
     public void createStockMovement(Order order, OrderType ordertype) {
         StockMovement stock = StockMovement.builder()
                 .quantity(order.getQuantity())
-                .type(ordertype)
+                .type(ordertype.toString())
                 .creationDate(LocalDateTime.now())
                 .item(order.getItem())
                 .build();
@@ -101,10 +101,10 @@ public class StockMovementService {
     }
 
     private void satisfyPendingOrders(StockMovementDTO dto) {
-        List<Order> ordersAwaitingStock = orderRepository.findByStatusAndItemId(OrderStatus.AWAITING_STOCK, dto.getItemId());
+        List<Order> ordersAwaitingStock = orderRepository.findByStatusAndItemId(OrderStatus.AWAITING_STOCK.toString(), dto.getItemId());
         ordersAwaitingStock.forEach(order -> {
             if (itemService.performStockWithdrawal(order.getItem(), order.getQuantity())) {
-                order.setStatus(OrderStatus.FINISHED);
+                order.setStatus(OrderStatus.FINISHED.toString());
             }
         });
     }

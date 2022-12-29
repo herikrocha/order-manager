@@ -1,7 +1,6 @@
 package com.example.ordermanager.repository;
 
 import com.example.ordermanager.entity.Order;
-import com.example.ordermanager.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +12,5 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
 //    boolean existsRoleByName(String name);
     Optional<Order> findById(Long orderId);
-    List<Order> findByStatusAndItemId(OrderStatus orderStatus, Long itemId);
+    List<Order> findByStatusAndItemId(String orderStatus, Long itemId);
 }

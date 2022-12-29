@@ -23,7 +23,7 @@ public class StockMovement {
 
     private Integer quantity;
 
-    private OrderType type;
+    private String type;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "itemId", referencedColumnName = "id")

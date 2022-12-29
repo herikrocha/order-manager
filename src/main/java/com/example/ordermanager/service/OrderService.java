@@ -35,6 +35,7 @@ public class OrderService {
                         .quantity(stock.getQuantity())
                         .userId(stock.getUser().getId())
                         .itemId(stock.getItem().getId())
+                        .status(stock.getStatus())
                         .build())
                 .collect(Collectors.toList());
     }
@@ -83,12 +84,13 @@ public class OrderService {
 
     private void updateResponse(OrderDTO orderDTO, Order order) {
         orderDTO.setCreationDate(order.getCreationDate());
+        orderDTO.setStatus(order.getStatus());
         orderDTO.setId(order.getId());
     }
 
     private void updateOrder(Order order, OrderStatus orderStatus) {
         if (order.getStatus().equals(OrderStatus.AWAITING_STOCK)) {
-            order.setStatus(orderStatus);
+            order.setStatus(orderStatus.toString());
             orderRepository.saveAndFlush(order);
         } else {
             throw new InvalidArgumentException(AppConstants.INVALID_ORDER_STATUS);
@@ -103,11 +105,11 @@ public class OrderService {
     }
 
     private void setInitialOrderStatus(Order order) {
-        order.setStatus(OrderStatus.AWAITING_STOCK);
+        order.setStatus(OrderStatus.AWAITING_STOCK.toString());
     }
 
     private void setFinishOrder(Order order) {
-        order.setStatus(OrderStatus.FINISHED);
+        order.setStatus(OrderStatus.FINISHED.toString());
         // TODO: Notify order finished
     }
 

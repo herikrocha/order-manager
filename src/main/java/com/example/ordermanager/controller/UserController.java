@@ -20,8 +20,8 @@ public class UserController {
 
     @Transactional
     @PostMapping
-    public ResponseEntity<UserDTO> save(@RequestBody @Valid UserDTO roleDTO) {
-        return ResponseEntity.ok(userService.create(roleDTO));
+    public ResponseEntity<UserDTO> save(@RequestBody @Valid UserDTO userDTO) {
+        return ResponseEntity.ok(userService.create(userDTO));
     }
 
     @GetMapping
@@ -31,8 +31,8 @@ public class UserController {
 
     @Transactional
     @PutMapping
-    public ResponseEntity<UserDTO> update(@RequestBody @Valid UserDTO roleDTO) {
-        return ResponseEntity.ok(userService.update(roleDTO));
+    public ResponseEntity<UserDTO> update(@RequestBody @Valid UserDTO userDTO) {
+        return ResponseEntity.ok(userService.update(userDTO));
     }
 
     @Transactional

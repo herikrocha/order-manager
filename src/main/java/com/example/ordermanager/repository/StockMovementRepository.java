@@ -10,6 +10,5 @@ import java.util.Optional;
 @Repository
 public interface StockMovementRepository extends JpaRepository<StockMovement, Long> {
 
-//    boolean existsRoleByName(String name);
     Optional<StockMovement> findById(Long stockId);
 }

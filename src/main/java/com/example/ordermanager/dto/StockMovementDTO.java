@@ -24,7 +24,7 @@ public class StockMovementDTO {
     @NotNull(message = "Quantity must be informed!")
     private Integer quantity;
     @NotNull(message = "Type must be informed!")
-    private OrderType type;
+    private String type;
     @NotNull(message = "ItemId must be informed!")
     private Long itemId;
 }

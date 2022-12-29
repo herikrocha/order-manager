@@ -18,8 +18,8 @@ public class ItemController {
 
     @Transactional
     @PostMapping
-    public ResponseEntity<ItemDTO> save(@RequestBody @Valid ItemDTO roleDTO) {
-        return ResponseEntity.ok(itemService.create(roleDTO));
+    public ResponseEntity<ItemDTO> save(@RequestBody @Valid ItemDTO itemDTO) {
+        return ResponseEntity.ok(itemService.create(itemDTO));
     }
 
     @GetMapping
@@ -29,8 +29,8 @@ public class ItemController {
 
     @Transactional
     @PutMapping
-    public ResponseEntity<ItemDTO> update(@RequestBody @Valid ItemDTO roleDTO) {
-        return ResponseEntity.ok(itemService.update(roleDTO));
+    public ResponseEntity<ItemDTO> update(@RequestBody @Valid ItemDTO itemDTO) {
+        return ResponseEntity.ok(itemService.update(itemDTO));
     }
 
     @Transactional

@@ -24,8 +24,7 @@ public class OrderDTO {
     private LocalDateTime creationDate;
     @NotNull(message = "Quantity must be informed!")
     private Integer quantity;
-    @NotBlank(message = "Status must be informed!")
-    private OrderStatus status;
+    private String status;
     @NotNull(message = "ItemId must be informed!")
     private Long itemId;
     @NotNull(message = "UserId must be informed!")
